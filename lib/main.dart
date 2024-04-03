@@ -1,6 +1,7 @@
 import 'package:counter/cubit/counter_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -45,7 +46,31 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[],
+        children: <Widget>[
+          Text(
+            'You have pushed the button this many times:',
+          ),
+          Text('Coqnter'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FloatingActionButton(
+                onPressed: () {
+                  context.read<CounterCubitCubit>().increment();
+                },
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  context.read<CounterCubitCubit>().decrement();
+                },
+                tooltip: 'Decrement',
+                child: const Icon(Icons.remove),
+              ),
+     )
+       
+        ],
       )),
     );
   }
